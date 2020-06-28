@@ -1,0 +1,73 @@
+{
+    "Dependencies": [],
+    "Components": [
+        {
+            "$type": "Unity.Build.Common.GeneralSettings, Unity.Build",
+            "ProductName": "Space Dots",
+            "CompanyName": "ricky Test"
+        },
+        {
+            "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
+            "$version": 1,
+            "Platform": "Android",
+            "Configuration": 2,
+            "Incremental": false
+        },
+        {
+            "$type": "Unity.Build.Classic.ClassicScriptingSettings, Unity.Build.Classic",
+            "ScriptingBackend": 1,
+            "Il2CppCompilerConfiguration": 1,
+            "UseIncrementalGC": true
+        },
+        {
+            "$type": "Unity.Build.Classic.ClassicCodeStrippingOptions, Unity.Build.Classic",
+            "StripEngineCode": true,
+            "ManagedStrippingLevel": 1
+        },
+        {
+            "$type": "Unity.Build.Android.AndroidExportSettings, Unity.Build.Android",
+            "TargetType": 0,
+            "ExportProject": false,
+            "BuildSystem": 0
+        },
+        {
+            "$type": "Unity.Build.Android.AndroidArchitectures, Unity.Build.Android",
+            "Architectures": 2
+        },
+        {
+            "$type": "Unity.Build.Android.AndroidAPILevels, Unity.Build.Android",
+            "MinAPILevel": 19,
+            "TargetAPILevel": 0
+        },
+        {
+            "$type": "Unity.Build.Android.ApplicationIdentifier, Unity.Build.Android",
+            "PackageName": "com.rickyco.spacedots"
+        },
+        {
+            "$type": "Unity.Build.Common.SceneList, Unity.Build",
+            "$version": 1,
+            "BuildCurrentScene": false,
+            "SceneInfos": [
+                {
+                    "Scene": "GlobalObjectId_V1-1-9fc0d4010bbf28b4594072e72b8655ab-102900000-0",
+                    "AutoLoad": true
+                }
+            ]
+        },
+        {
+            "$type": "Unity.Build.Common.OutputBuildDirectory, Unity.Build",
+            "OutputDirectory": "out"
+        },
+        {
+            "$type": "Unity.Build.Android.AndroidInstallLocation, Unity.Build.Android",
+            "InstallLocation": 0
+        },
+        {
+            "$type": "Unity.Build.Android.AndroidExternalTools, Unity.Build.Android",
+            "JavaPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer\\OpenJDK",
+            "SdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer\\SDK",
+            "NdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/NDK",
+            "GradlePath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/Tools/gradle"
+        }
+    ]
+}
