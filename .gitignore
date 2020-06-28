@@ -67,3 +67,4 @@ crashlytics-build.properties
 /space-dots/Library
 /space-dots/Temp
 /space-dots/Logs
+/space-dots/obj/Debug
