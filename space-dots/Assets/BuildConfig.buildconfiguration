@@ -68,6 +68,15 @@
             "SdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer\\SDK",
             "NdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/NDK",
             "GradlePath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/Tools/gradle"
+        },
+        {
+            "$type": "Unity.Build.Common.ScriptingDebuggerSettings, Unity.Build",
+            "WaitForManagedDebugger": false
+        },
+        {
+            "$type": "Unity.Build.Classic.PlayerConnectionSettings, Unity.Build.Classic",
+            "Mode": 0,
+            "WaitForConnection": false
         }
     ]
 }
