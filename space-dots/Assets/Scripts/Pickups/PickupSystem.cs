@@ -27,16 +27,17 @@ public class PickupSystem : SystemBase
             .WithDeallocateOnJobCompletion(attractorTranslations)
             .ForEach((ref Entity pickupEntity, in Translation translation) =>
             {
-                foreach (Translation attractorTranslation in attractorTranslations)
+                for (var i = 0; i < attractorTranslations.Length; i++)
                 {
+                    Translation attractorTranslation = attractorTranslations[i];
                     float3 seperation = attractorTranslation.Value - translation.Value;
                     float distSq = math.lengthsq(seperation);
                 }
+
                 //float3 dir = math.normalizesafe(distance);
                 //float3 delta = dir * speed.Value * deltaTime;
                 //float3 finalMove = math.select(delta, distance, math.lengthsq(delta) > math.lengthsq(distance));
                 //translation.Value += finalMove;
-
             }).Schedule(inputDepends);
 
         Dependency = outputDepends;
