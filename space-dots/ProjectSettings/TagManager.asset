@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1714803323
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ships
+    uniqueID: 2707521139
+    locked: 0
+  - name: Turrets
+    uniqueID: 2836287033
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2572978963
+    locked: 0
+  - name: UI
+    uniqueID: 3831697353
     locked: 0

@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1b982b978cafcc24d96d4349f86b8fd2, type: 3}
+    - {fileID: 102900000, guid: edaa4bae40e23634a82ed20a46202db8, type: 3}
+    - {fileID: 102900000, guid: 13a3c2ef11d40444fa3ffc2d55740d82, type: 3}
+    - {fileID: 102900000, guid: 555199e4b97d98f42810dc78848558cb, type: 3}
+    - {fileID: 102900000, guid: e3f48d6dc8d98cd458a95c7d2da02208, type: 3}
+    - {fileID: 102900000, guid: 57b76d2860d2b4f439690d10849cb05c, type: 3}
+    totalSpriteSurfaceArea: 1248760
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: dd427b106c4115f4ea1d1c10a4c91f55, type: 3}
+  - {fileID: 21300000, guid: 15b3732051178b24494389111427ff7a, type: 3}
+  - {fileID: 21300000, guid: f0e169203ece9a743b398a34d45a0269, type: 3}
+  - {fileID: 21300000, guid: 83f530308b93c554f91af6d5a8ce5607, type: 3}
+  - {fileID: 21300000, guid: e1352270d3e737942b035266f61965d4, type: 3}
+  - {fileID: 21300000, guid: b4632570e919c6f459168cdf0a8c9a2a, type: 3}
+  - {fileID: 21300000, guid: d80cdbc06d812fc4199cdd7c4c11f128, type: 3}
+  - {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
+  - {fileID: 21300000, guid: ee8261317c1ff734daa9da91d24312b3, type: 3}
+  - {fileID: 21300000, guid: 5c018e4179a9d5245900ded5edc50e91, type: 3}
+  - {fileID: 21300000, guid: c2fcd762a8bd6cf4dbd18ba12ddc1525, type: 3}
+  - {fileID: 21300000, guid: b0ed85a272b9b72439cc52dc2433f092, type: 3}
+  - {fileID: 21300000, guid: 9c7df7a295e42674eb093a49346a77db, type: 3}
+  - {fileID: 21300000, guid: 75d0fa0347708ef4498355b920afb845, type: 3}
+  - {fileID: 21300000, guid: 9323a6c37ab7cee46aff0f07c38607a9, type: 3}
+  - {fileID: 21300000, guid: 76b0aac3cf1d96c4dbe96461a16846a8, type: 3}
+  - {fileID: 21300000, guid: a507e4d319138d44482579bc5610a9e5, type: 3}
+  - {fileID: 21300000, guid: a44af304548cb7b4aadb97582f60d728, type: 3}
+  - {fileID: 21300000, guid: f0630834cdbcfa44e9df53403e44cd58, type: 3}
+  - {fileID: 21300000, guid: 367c33b49e78721499761b909b570691, type: 3}
+  - {fileID: 21300000, guid: b618a4750ef81c94c8bcde0fae940691, type: 3}
+  - {fileID: 21300000, guid: 98be93167ed6cd54d82a8e882da6f3e1, type: 3}
+  - {fileID: 21300000, guid: a39f5d360eb38284fb54a62672b5ec9f, type: 3}
+  - {fileID: 21300000, guid: 83bb9b768d3a6734aae0bfb712f96018, type: 3}
+  - {fileID: 21300000, guid: 06ebc3b6f7d199745ac6895e9d0f2e09, type: 3}
+  - {fileID: 21300000, guid: e72b5607b24dd3247a7168ad745086fb, type: 3}
+  - {fileID: 21300000, guid: 19ea3c87eb07d7f429b7164c647f167f, type: 3}
+  - {fileID: 21300000, guid: 0c46a108de586de4da749c8c5ba30ec3, type: 3}
+  - {fileID: 21300000, guid: b520897860de45a489bea7656ba71eef, type: 3}
+  - {fileID: 21300000, guid: f254e398beb012142a24633fa2b82def, type: 3}
+  - {fileID: 21300000, guid: 86fb24d85ff46c2478675ef1b33e5869, type: 3}
+  - {fileID: 21300000, guid: 9d7dfb09158050b4f87f70dcc341698c, type: 3}
+  - {fileID: 21300000, guid: 71ef384979ff75f4990c1dde652054b4, type: 3}
+  - {fileID: 21300000, guid: f94df059a55ade342918fe7d0e8c2299, type: 3}
+  - {fileID: 21300000, guid: e299877945f4faa4d87538588f58b9a5, type: 3}
+  - {fileID: 21300000, guid: 4af45e89e7061e7409f6aafe3149425b, type: 3}
+  - {fileID: 21300000, guid: 9c85acf95f904fd479f36a25bc647fd9, type: 3}
+  - {fileID: 21300000, guid: 859a688a03b6274409bde78f8c964d9f, type: 3}
+  - {fileID: 21300000, guid: 2b9d02daf092f1f4589868061e46f087, type: 3}
+  - {fileID: 21300000, guid: a93c36da6f7182e4096ca2c951efbf42, type: 3}
+  - {fileID: 21300000, guid: 57d4fd0b0aa675a4b867404cf0888d22, type: 3}
+  - {fileID: 21300000, guid: 31d8a46be10bcd3409183a6525fc1635, type: 3}
+  - {fileID: 21300000, guid: 6de6a4ab3d5aa76418929b1e99c29f81, type: 3}
+  - {fileID: 21300000, guid: f7eb00cb3ec9bab45b85d561558c4250, type: 3}
+  - {fileID: 21300000, guid: b909b07c03c5f6b4687729ca067620c6, type: 3}
+  - {fileID: 21300000, guid: 8d5f697c999643441bb417d834c597de, type: 3}
+  - {fileID: 21300000, guid: cc2721dc8706a474b97273837abcf0b7, type: 3}
+  - {fileID: 21300000, guid: a1a667fce840ba24190516baafb53769, type: 3}
+  - {fileID: 21300000, guid: 1ac351cd14b08e04db823ec9346d42f8, type: 3}
+  - {fileID: 21300000, guid: ee8075cd9076a904da23908561f65965, type: 3}
+  - {fileID: 21300000, guid: c8a99bdd0f08b8c47af88824e592097b, type: 3}
+  - {fileID: 21300000, guid: 0f3a720ed8c07f14ea6b92d6fefc8c0c, type: 3}
+  - {fileID: 21300000, guid: 1932640e6cf290044a4ee6967192234d, type: 3}
+  - {fileID: 21300000, guid: 394b5b0edcab9644e883ef25893924dd, type: 3}
+  - {fileID: 21300000, guid: 0cf63e7efdccc0a4793feeb4a05ec80e, type: 3}
+  - {fileID: 21300000, guid: c4f8a01fad80ab74f8e250b688d74a55, type: 3}
+  - {fileID: 21300000, guid: e8c31d2fa3f34be4c81690a90d57718e, type: 3}
+  - {fileID: 21300000, guid: d30a353fc5e62e445b58e341d953d45e, type: 3}
+  - {fileID: 21300000, guid: d01cff5f204294b49bb86fcf5a2aeec0, type: 3}
+  - {fileID: 21300000, guid: 677b4bafa69a3f24b904f82f7fc3deee, type: 3}
+  - {fileID: 21300000, guid: 9a04f6cfae75c064997fb1ddf1827c86, type: 3}
+  - {fileID: 21300000, guid: 42db57cf6647faf4b9eae8778204ed4d, type: 3}
+  - {fileID: 21300000, guid: 8d6eaaefbef73894d96ae55f7da066ec, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Debris (2)
+  - Turret Medium 4
+  - Debris (5)
+  - Alien 4
+  - Debris (6)
+  - Small Flare
+  - Missile (7)
+  - Destroyer 1
+  - Asteroid 1
+  - BigFlare
+  - Turret Medium 3
+  - Smoke 2
+  - Missile (3)
+  - Turret Small 3
+  - Alien 3
+  - Turret Platform
+  - Alien 2
+  - Asteroid 3
+  - Cruiser 2
+  - Fighter 3
+  - Turret Medium 1
+  - Missile (1)
+  - Frigate 2
+  - Burst
+  - Asteroid 5
+  - Frigate 1
+  - Huge 1
+  - DustSpray (1)
+  - Turret Small 4
+  - Asteroid 4
+  - DustSpray (2)
+  - Turret Large 2
+  - Missile (6)
+  - Turret Large 1
+  - Flare
+  - Station 1
+  - Carrier 1
+  - Destroyer 2
+  - Projectile Thin
+  - Fighter 4
+  - Debris (3)
+  - Projectile Sharp
+  - Smoke 1
+  - Alien 1
+  - Big Projectile
+  - Fighter 1
+  - Missile (5)
+  - Turret Medium 2
+  - Debris (4)
+  - Smoke 3
+  - Turret Small 1
+  - Asteroid 2
+  - Shield Bubble
+  - Fighter 2
+  - Starflare
+  - Cruiser 3
+  - Station 2
+  - Explosion
+  - Cruiser 1
+  - Turret Small 2
+  - Asteroid 6
+  - Missile (4)
+  - Debris (1)
+  m_Tag: Sprites
+  m_IsVariant: 0
