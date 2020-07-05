@@ -10,7 +10,7 @@
             "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
             "$version": 1,
             "Platform": "Android",
-            "Configuration": 2,
+            "Configuration": 3,
             "Incremental": false
         },
         {
@@ -49,6 +49,10 @@
             "BuildCurrentScene": false,
             "SceneInfos": [
                 {
+                    "Scene": "GlobalObjectId_V1-1-3a287378077d13f4e9c652b5de1c0d51-102900000-0",
+                    "AutoLoad": false
+                },
+                {
                     "Scene": "GlobalObjectId_V1-1-789dfd154d3c3064fae0c2f7c3b2cab8-102900000-0",
                     "AutoLoad": true
                 }
@@ -68,15 +72,6 @@
             "SdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer\\SDK",
             "NdkPath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/NDK",
             "GradlePath": "E:/unity/2020.1.0b10/Editor/Data/PlaybackEngines/AndroidPlayer/Tools/gradle"
-        },
-        {
-            "$type": "Unity.Build.Common.ScriptingDebuggerSettings, Unity.Build",
-            "WaitForManagedDebugger": false
-        },
-        {
-            "$type": "Unity.Build.Classic.PlayerConnectionSettings, Unity.Build.Classic",
-            "Mode": 0,
-            "WaitForConnection": false
         }
     ]
 }
