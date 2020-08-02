@@ -14,7 +14,7 @@ public class FollowEntitySystem : SystemBase
             .WithReadOnly(translationData)
             .ForEach((ref TargetPosition targetPosition, in FollowEntity follow) =>
             {
-                if (translationData.Exists(follow.Target))
+                if (translationData.HasComponent(follow.Target))
                 {
                     Translation target = translationData[follow.Target];
                     targetPosition.Value = target.Value;
