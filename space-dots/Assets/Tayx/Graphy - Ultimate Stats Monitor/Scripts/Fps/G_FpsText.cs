@@ -65,7 +65,7 @@ namespace Tayx.Graphy.Fps
 
         private void Update()
         {
-            m_deltaTime += Time.unscaledDeltaTime;
+            m_deltaTime += Time.deltaTime;
 
             m_frameCount++;
 

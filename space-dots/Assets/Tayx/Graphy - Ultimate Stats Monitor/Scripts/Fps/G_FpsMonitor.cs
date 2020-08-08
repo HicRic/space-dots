@@ -46,7 +46,7 @@ namespace Tayx.Graphy.Fps
         private                     float           m_timeToResetMinFpsPassed   = 0f;
         private                     float           m_timeToResetMaxFpsPassed   = 0f;
 
-        private                     float           unscaledDeltaTime           = 0f;
+        private                     float           deltaTime           = 0f;
 
         #endregion
 
@@ -69,14 +69,14 @@ namespace Tayx.Graphy.Fps
 
         private void Update()
         {
-            unscaledDeltaTime = Time.unscaledDeltaTime;
+            deltaTime = Time.deltaTime;
 
-            m_timeToResetMinFpsPassed += unscaledDeltaTime;
-            m_timeToResetMaxFpsPassed += unscaledDeltaTime;
+            m_timeToResetMinFpsPassed += deltaTime;
+            m_timeToResetMaxFpsPassed += deltaTime;
 
             // Update fps and ms
 
-            m_currentFps = 1 / unscaledDeltaTime;
+            m_currentFps = 1 / deltaTime;
 
             // Update avg fps
 

@@ -92,7 +92,7 @@ namespace Tayx.Graphy.Fps
 
         protected override void UpdateGraph()
         {
-            int fps = (int)(1 / Time.unscaledDeltaTime);
+            int fps = (int)(1 / Time.deltaTime);
 
             int currentMaxFps = 0;
 

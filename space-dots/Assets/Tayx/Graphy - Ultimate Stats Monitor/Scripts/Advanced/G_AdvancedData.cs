@@ -86,7 +86,7 @@ namespace Tayx.Graphy.Advanced
 
         private void Update()
         {
-            m_deltaTime += Time.unscaledDeltaTime;
+            m_deltaTime += Time.deltaTime;
 
             if (m_deltaTime > 1f / m_updateRate)
             {
