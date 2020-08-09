@@ -63,6 +63,7 @@ public class PickupSystem : SystemBase
                         {
                             Target = attractorEntities[closestIdx]
                         });
+                    entityCommandBuffer.AddComponent<TargetPosition>(pickupEntity);
                 }
 
             }).Schedule(inputDepends);
