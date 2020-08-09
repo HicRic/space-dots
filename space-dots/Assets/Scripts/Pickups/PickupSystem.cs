@@ -8,38 +8,66 @@ using Unity.Transforms;
 public class PickupSystem : SystemBase
 {
     private EntityQuery attractorQuery;
+    private EntityCommandBufferSystem ecbs;
 
     protected override void OnCreate()
     {
         base.OnCreate();
         attractorQuery = GetEntityQuery(ComponentType.ReadOnly<PickupAttractor>(), ComponentType.ReadOnly<Translation>());
+        ecbs = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
-        NativeArray<Translation> attractorTranslations =
-            attractorQuery.ToComponentDataArrayAsync<Translation>(Allocator.TempJob, out JobHandle arrayJob);
-        JobHandle inputDepends = JobHandle.CombineDependencies(Dependency, arrayJob);
+        EntityCommandBuffer entityCommandBuffer = ecbs.CreateCommandBuffer();
 
+        NativeArray<Entity> attractorEntities = attractorQuery.ToEntityArrayAsync(Allocator.TempJob, out JobHandle entityArrayJob);
+        NativeArray<Translation> attractorTranslations = attractorQuery.ToComponentDataArrayAsync<Translation>(Allocator.TempJob, out JobHandle translationArrayJob);
+        NativeArray<PickupAttractor> attractors = attractorQuery.ToComponentDataArrayAsync<PickupAttractor>(Allocator.TempJob, out JobHandle attractorArrayJob);
+
+        JobHandle inputDepends = JobHandle.CombineDependencies(Dependency, translationArrayJob, entityArrayJob);
+        inputDepends = JobHandle.CombineDependencies(inputDepends, attractorArrayJob);
+
+        // Iterate all entities with PickupTag that don't have a FollowEntity
         JobHandle outputDepends = Entities
             .WithAll<PickupTag>()
             .WithNone<FollowEntity>()
-            .WithDeallocateOnJobCompletion(attractorTranslations)
+            .WithDisposeOnCompletion(attractorEntities)
+            .WithDisposeOnCompletion(attractorTranslations)
+            .WithDisposeOnCompletion(attractors)
+            .WithoutBurst()
             .ForEach((ref Entity pickupEntity, in Translation translation) =>
             {
+                // Find the closest PickupAttractor to this entity
+                int closestIdx = -1;
+                float closestDistSq = float.MaxValue;
                 for (var i = 0; i < attractorTranslations.Length; i++)
                 {
                     Translation attractorTranslation = attractorTranslations[i];
-                    float3 seperation = attractorTranslation.Value - translation.Value;
-                    float distSq = math.lengthsq(seperation);
+                    float3 separation = attractorTranslation.Value - translation.Value;
+
+                    float attractionRadius = attractors[i].AttractionRadius;
+                    float distSq = math.lengthsq(separation);
+                    if (distSq < attractionRadius * attractionRadius && distSq < closestDistSq)
+                    {
+                        closestDistSq = distSq;
+                        closestIdx = i;
+                    }
                 }
 
-                //float3 dir = math.normalizesafe(distance);
-                //float3 delta = dir * speed.Value * deltaTime;
-                //float3 finalMove = math.select(delta, distance, math.lengthsq(delta) > math.lengthsq(distance));
-                //translation.Value += finalMove;
+                if (closestIdx > -1)
+                {
+                    // Tell the entity to follow the closest attractor
+                    entityCommandBuffer.AddComponent(pickupEntity,
+                        new FollowEntity
+                        {
+                            Target = attractorEntities[closestIdx]
+                        });
+                }
+
             }).Schedule(inputDepends);
 
+        ecbs.AddJobHandleForProducer(outputDepends);
         Dependency = outputDepends;
     }
 }

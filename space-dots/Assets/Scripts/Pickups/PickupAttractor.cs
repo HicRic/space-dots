@@ -6,6 +6,5 @@ using Unity.Mathematics;
 [Serializable, GenerateAuthoringComponent]
 public struct PickupAttractor : IComponentData
 {
-    public float PickupFollowRadius;
-    public float PickupRadius;
+    public float AttractionRadius;
 }
