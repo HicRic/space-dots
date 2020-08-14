@@ -113,6 +113,8 @@ PlayerSettings:
   switchNVNShaderPoolsGranularity: 33554432
   switchNVNDefaultPoolsGranularity: 16777216
   switchNVNOtherPoolsGranularity: 16777216
+  switchNVNMaxPublicTextureIDCount: 0
+  switchNVNMaxPublicSamplerIDCount: 0
   stadiaPresentMode: 0
   stadiaTargetFramerate: 0
   vulkanNumSwapchainBuffers: 3
@@ -244,7 +246,7 @@ PlayerSettings:
   clonedFromGUID: c0afd0d1d80e3634a9dac47e8a0426ea
   templatePackageId: com.unity.template.3d@5.0.3
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
@@ -604,6 +606,7 @@ PlayerSettings:
   ps4ShareFilePath: 
   ps4ShareOverlayImagePath: 
   ps4PrivacyGuardImagePath: 
+  ps4ExtraSceSysFile: 
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
   ps4RemotePlayKeyMappingDir: 
@@ -646,6 +649,8 @@ PlayerSettings:
   ps4disableAutoHideSplash: 0
   ps4videoRecordingFeaturesUsed: 0
   ps4contentSearchFeaturesUsed: 0
+  ps4CompatibilityPS5: 0
+  ps4GPU800MHz: 1
   ps4attribEyeToEyeDistanceSettingVR: 0
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
