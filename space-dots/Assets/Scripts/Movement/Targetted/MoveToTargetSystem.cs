@@ -13,11 +13,11 @@ public class MoveToTargetSystem : SystemBase
         Entities
             .ForEach((ref Translation translation, in TargetPosition target, in MoveSpeed speed) =>
             {
-                float3 distance = target.Value - translation.Value;
-                float3 dir = math.normalizesafe(distance);
-                float3 delta = dir * speed.Value * deltaTime;
-                float3 finalMove = math.select(delta, distance, math.lengthsq(delta) > math.lengthsq(distance));
-                translation.Value += finalMove;
+                float2 distance = target.Value - translation.Value.xy;
+                float2 dir = math.normalizesafe(distance);
+                float2 delta = dir * speed.Value * deltaTime;
+                float2 finalMove = math.select(delta, distance, math.lengthsq(delta) > math.lengthsq(distance));
+                translation.Value.xy += finalMove;
 
             }).Schedule();
     }

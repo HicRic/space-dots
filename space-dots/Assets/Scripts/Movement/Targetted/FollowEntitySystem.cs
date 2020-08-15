@@ -1,6 +1,4 @@
-﻿using Unity.Burst;
-using Unity.Collections;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Jobs;
 using Unity.Transforms;
 
@@ -28,7 +26,7 @@ public class FollowEntitySystem : SystemBase
                 {
                     // If our FollowEntity's Translation is found, update our TargetPosition
                     Translation target = translationData[follow.Target];
-                    targetPosition.Value = target.Value;
+                    targetPosition.Value = target.Value.xy;
                 }
                 else
                 {

@@ -44,7 +44,7 @@ public class PickupSystem : SystemBase
                 for (var i = 0; i < attractorTranslations.Length; i++)
                 {
                     Translation attractorTranslation = attractorTranslations[i];
-                    float3 separation = attractorTranslation.Value - translation.Value;
+                    float2 separation = attractorTranslation.Value.xy - translation.Value.xy;
 
                     float attractionRadius = attractors[i].AttractionRadius;
                     float distSq = math.lengthsq(separation);
