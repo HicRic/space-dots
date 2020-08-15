@@ -10,6 +10,7 @@ public class MoveToTargetSystem : SystemBase
     protected override void OnUpdate()
     {
         float deltaTime = Time.DeltaTime;
+
         Entities
             .ForEach((ref Translation translation, in TargetPosition target, in MoveSpeed speed) =>
             {
@@ -19,6 +20,14 @@ public class MoveToTargetSystem : SystemBase
                 float2 finalMove = math.select(delta, distance, math.lengthsq(delta) > math.lengthsq(distance));
                 translation.Value.xy += finalMove;
 
+            }).Schedule();
+
+        Entities
+            .ForEach((ref MotionIntent intent, in Translation translation, in TargetPosition target) =>
+            {
+                float2 direction = target.Value - translation.Value.xy;
+                intent.DirectionNormalized = math.normalizesafe(direction);
+                intent.ThrottleNormalized = 1f;
             }).Schedule();
     }
 }

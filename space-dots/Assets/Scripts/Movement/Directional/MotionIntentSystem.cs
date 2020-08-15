@@ -17,7 +17,7 @@ public class MotionIntentSystem : SystemBase
         {
             float throttle = math.lerp(0, limits.LinearAccelerationLimit, intent.ThrottleNormalized);
 
-            float2 facing = math.normalize(math.rotate(rotation.Value, new float3(0f,1f,0f)).xy);
+            float2 facing = math.normalizesafe(math.rotate(rotation.Value, math.up()).xy, math.up().xy);
             linearAcceleration.Value = facing * throttle;
 
             float desiredAngleDelta = math.acos(math.dot(facing, intent.DirectionNormalized));
