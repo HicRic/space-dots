@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4de85f8b9914317b4918ab4b9b5d031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinearAccelerationLimit: 1
+  LinearAccelerationLimit: 5
   AngularVelocityLimit: 3
 --- !u!114 &988439444709865548
 MonoBehaviour:
