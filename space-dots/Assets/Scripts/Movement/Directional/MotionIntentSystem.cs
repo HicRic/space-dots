@@ -9,7 +9,6 @@ public class MotionIntentSystem : SystemBase
         float deltaTime = Time.DeltaTime;
 
         Entities
-            .WithoutBurst()
             .ForEach((
             ref LinearAcceleration linearAcceleration,
             ref Rotation rotation,

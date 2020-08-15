@@ -14,7 +14,9 @@ public class InputHandler : MonoBehaviour
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData));
+#if UNITY_EDITOR
         entityManager.SetName(inputDataEntity, "InputData");
+#endif
     }
 
     private void OnDestroy()
