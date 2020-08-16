@@ -35,7 +35,6 @@ public class PickupSystem : SystemBase
             .WithDisposeOnCompletion(attractorEntities)
             .WithDisposeOnCompletion(attractorTranslations)
             .WithDisposeOnCompletion(attractors)
-            .WithoutBurst()
             .ForEach((ref Entity pickupEntity, in Translation translation) =>
             {
                 // Find the closest PickupAttractor to this entity
