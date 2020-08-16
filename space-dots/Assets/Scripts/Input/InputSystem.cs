@@ -10,7 +10,7 @@ public class InputSystem : SystemBase
     {
         base.OnCreate();
 
-        inputQuery = GetEntityQuery(typeof(MoveInputData));
+        inputQuery = GetEntityQuery(ComponentType.ReadOnly<MoveInputData>());
     }
 
     protected override void OnUpdate()
