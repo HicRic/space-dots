@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 [Serializable, GenerateAuthoringComponent]
-public struct XPGain : IComponentData
+public struct CurrencyXP : IComponentData
 {
     public int Amount;
 }

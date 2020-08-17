@@ -1,73 +1,46 @@
-﻿using Unity.Burst;
-using Unity.Collections;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
 public class PickupSystem : SystemBase
 {
-    private EntityQuery attractorQuery;
-    private EntityCommandBufferSystem ecbs;
+    private EndSimulationEntityCommandBufferSystem ecbs;
 
     protected override void OnCreate()
     {
         base.OnCreate();
-        attractorQuery = GetEntityQuery(ComponentType.ReadOnly<PickupAttractor>(), ComponentType.ReadOnly<Translation>());
         ecbs = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
-        EntityCommandBuffer entityCommandBuffer = ecbs.CreateCommandBuffer();
+        EntityCommandBuffer ecb = ecbs.CreateCommandBuffer();
 
-        NativeArray<Entity> attractorEntities = attractorQuery.ToEntityArrayAsync(Allocator.TempJob, out JobHandle entityArrayJob);
-        NativeArray<Translation> attractorTranslations = attractorQuery.ToComponentDataArrayAsync<Translation>(Allocator.TempJob, out JobHandle translationArrayJob);
-        NativeArray<PickupAttractor> attractors = attractorQuery.ToComponentDataArrayAsync<PickupAttractor>(Allocator.TempJob, out JobHandle attractorArrayJob);
+        ComponentDataFromEntity<Translation> translations = GetComponentDataFromEntity<Translation>(true);
+        ComponentDataFromEntity<PickupAttractor> attractors = GetComponentDataFromEntity<PickupAttractor>(true);
 
-        JobHandle inputDepends = JobHandle.CombineDependencies(Dependency, translationArrayJob, entityArrayJob);
-        inputDepends = JobHandle.CombineDependencies(inputDepends, attractorArrayJob);
-
-        // Iterate all entities with PickupTag that don't have a FollowEntity
-        JobHandle outputDepends = Entities
+        JobHandle outputDepend = Entities
             .WithAll<PickupTag>()
-            .WithNone<FollowEntity>()
-            .WithDisposeOnCompletion(attractorEntities)
-            .WithDisposeOnCompletion(attractorTranslations)
-            .WithDisposeOnCompletion(attractors)
-            .ForEach((ref Entity pickupEntity, in Translation translation) =>
+            .WithReadOnly(translations)
+            .WithReadOnly(attractors)
+            .ForEach((ref Entity entity, in Translation translation, in FollowEntity followEntity) =>
             {
-                // Find the closest PickupAttractor to this entity
-                int closestIdx = -1;
-                float closestDistSq = float.MaxValue;
-                for (var i = 0; i < attractorTranslations.Length; i++)
+                if (translations.HasComponent(followEntity.Target) && attractors.HasComponent(followEntity.Target))
                 {
-                    Translation attractorTranslation = attractorTranslations[i];
-                    float2 separation = attractorTranslation.Value.xy - translation.Value.xy;
+                    float distSq = math.distancesq(translation.Value, translations[followEntity.Target].Value);
+                    float pickupRadius = attractors[followEntity.Target].PickupRadius;
 
-                    float attractionRadius = attractors[i].AttractionRadius;
-                    float distSq = math.lengthsq(separation);
-                    if (distSq < attractionRadius * attractionRadius && distSq < closestDistSq)
+                    if (distSq <= pickupRadius * pickupRadius)
                     {
-                        closestDistSq = distSq;
-                        closestIdx = i;
+                        ecb.AddComponent(entity, new PickupCollect { Target = followEntity.Target });
+                        ecb.RemoveComponent<PickupTag>(entity);
+                        ecb.RemoveComponent<FollowEntity>(entity);
                     }
                 }
+            }).Schedule(Dependency);
 
-                if (closestIdx > -1)
-                {
-                    // Tell the entity to follow the closest attractor
-                    entityCommandBuffer.AddComponent(pickupEntity,
-                        new FollowEntity
-                        {
-                            Target = attractorEntities[closestIdx]
-                        });
-                    entityCommandBuffer.AddComponent<TargetPosition>(pickupEntity);
-                }
-
-            }).Schedule(inputDepends);
-
-        ecbs.AddJobHandleForProducer(outputDepends);
-        Dependency = outputDepends;
+        ecbs.AddJobHandleForProducer(outputDepend);
+        Dependency = outputDepend;
     }
 }

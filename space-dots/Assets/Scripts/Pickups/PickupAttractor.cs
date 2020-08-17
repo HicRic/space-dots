@@ -7,4 +7,5 @@ using Unity.Mathematics;
 public struct PickupAttractor : IComponentData
 {
     public float AttractionRadius;
+    public float PickupRadius;
 }

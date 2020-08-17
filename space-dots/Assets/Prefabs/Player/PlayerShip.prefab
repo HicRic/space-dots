@@ -5310,6 +5310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttractionRadius: 15
+  PickupRadius: 0.5
 --- !u!114 &1160837134618765406
 MonoBehaviour:
   m_ObjectHideFlags: 0
