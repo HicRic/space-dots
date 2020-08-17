@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    public TextMeshProUGUI tmp;
     private Entity inputDataEntity;
 
     private void Start()
@@ -31,7 +30,6 @@ public class InputHandler : MonoBehaviour
     public void OnMove(InputValue input)
     {
         Vector2 move = input.Get<Vector2>();
-        tmp.SetText(move.ToString());
         
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         MoveInputData data = entityManager.GetComponentData<MoveInputData>(inputDataEntity);
@@ -41,6 +39,5 @@ public class InputHandler : MonoBehaviour
 
     public void OnFire(InputValue input)
     {
-        tmp.SetText("fire!");
     }
 }
