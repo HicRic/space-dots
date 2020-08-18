@@ -1,6 +1,7 @@
 ﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
+using Unity.Mathematics;
 using Unity.Transforms;
 
 public class MoverSpawnSystem : SystemBase
@@ -49,8 +50,10 @@ public class MoverSpawnSystem : SystemBase
                     if (configId.Value == spawn.ConfigId)
                     {
                         Entity newMoverEntity = ecb.Instantiate(prefabEntities[i]);
-                        ecb.AddComponent(newMoverEntity, new Translation { Value = spawn.Position });
+                        ecb.AddComponent(newMoverEntity, new Translation { Value = new float3(spawn.Position, 0) });
+                        ecb.AddComponent(newMoverEntity, new Rotation { Value = spawn.Rotation });
                         ecb.AddComponent(newMoverEntity, new LinearVelocity { Value = spawn.Velocity});
+
                         return;
                     }
                 }

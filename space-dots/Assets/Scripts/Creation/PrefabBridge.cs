@@ -2,7 +2,7 @@
 using Unity.Entities;
 using UnityEngine;
 
-public class PickupPrefabs : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
+public class PrefabBridge : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
     [SerializeField] private Config Config = null;
 
@@ -15,6 +15,14 @@ public class PickupPrefabs : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
             dstManager.AddComponentData(ent, configPickup.MoveSpeed);
             dstManager.AddComponentData(ent, new ConfigId { Value = configPickup.Id });
         }
+
+        foreach (ProjectileConfig projectileConfig in Config.Projectiles)
+        {
+            Entity ent = conversionSystem.GetPrimaryEntity(projectileConfig.Prefab);
+            dstManager.AddComponentData(ent, new ProjectileTag());
+            dstManager.AddComponentData(ent, projectileConfig.SpawnSpeed);
+            dstManager.AddComponentData(ent, new ConfigId { Value = projectileConfig.Id });
+        }
     }
 
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
@@ -22,6 +30,11 @@ public class PickupPrefabs : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
         foreach (PickupConfig pickup in Config.Pickups)
         {
             referencedPrefabs.Add(pickup.Prefab);
+        }
+
+        foreach (ProjectileConfig projectile in Config.Projectiles)
+        {
+            referencedPrefabs.Add(projectile.Prefab);
         }
     }
 }

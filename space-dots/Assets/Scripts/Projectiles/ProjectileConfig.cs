@@ -6,5 +6,5 @@ public class ProjectileConfig
 {
     public uint Id;
     public GameObject Prefab;
-    public MotionPowerLimits MotionPowerLimits;
+    public SpawnSpeed SpawnSpeed;
 }

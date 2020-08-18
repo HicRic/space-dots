@@ -12,7 +12,7 @@ public class ProjectilePrefabs : MonoBehaviour, IDeclareReferencedPrefabs, IConv
         {
             Entity ent = conversionSystem.GetPrimaryEntity(config.Prefab);
             dstManager.AddComponentData(ent, new ProjectileTag());
-            dstManager.AddComponentData(ent, config.MotionPowerLimits);
+            dstManager.AddComponentData(ent, config.SpawnSpeed);
             dstManager.AddComponentData(ent, new ConfigId { Value = config.Id });
         }
     }
