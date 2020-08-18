@@ -24,10 +24,10 @@ public class PickupEmitterSystem : SystemBase
             {
                 emitter.LastEmissionTime += emitter.EmissionFrequency;
                 Entity spawn = ecb.CreateEntity();
-                ecb.AddComponent(spawn, new PickupSpawn
+                ecb.AddComponent(spawn, new MoverSpawnRequest
                 {
                     Position = translation.Value,
-                    PickupId = emitter.PickupId
+                    ConfigId = emitter.PickupId
                 });
             }
         }).Schedule(Dependency);

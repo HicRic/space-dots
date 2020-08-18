@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   Pickups:
-  - Id: 0
+  - Id: 2
     Prefab: {fileID: 3267258556071147055, guid: 97274e123858fe84489dec42ab667ab4, type: 3}
     MoveSpeed:
       Value: 5
@@ -21,3 +21,6 @@ MonoBehaviour:
     Prefab: {fileID: 3267258556071147055, guid: fba6ef7c0dbafe34099a21b0112333b9, type: 3}
     MoveSpeed:
       Value: 3
+  Projectiles:
+  - Id: 3
+    Prefab: {fileID: 3267258556071147055, guid: 6fa3d86ef5df3eb48994530ba5ecb57d, type: 3}

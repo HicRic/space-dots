@@ -413,7 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d170bf8501a05429d24fb041df2e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmp: {fileID: 0}
 --- !u!114 &617109711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf189ee3a32f4c558561bb033809eb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupId: 0
+  PickupId: 2
   EmissionFrequency: 0.1
   LastEmissionTime: 0
 --- !u!114 &1011169747
