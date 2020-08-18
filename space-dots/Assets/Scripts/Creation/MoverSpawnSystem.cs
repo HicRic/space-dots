@@ -21,9 +21,9 @@ public class MoverSpawnSystem : SystemBase
         {
             All = new[]
             {
-                ComponentType.ReadOnly<ConfigId>()
-            },
-            Options = EntityQueryOptions.IncludePrefab
+                ComponentType.ReadOnly<ConfigId>(),
+                ComponentType.ReadOnly<Prefab>(), 
+            }
         };
 
         prefabsQuery = GetEntityQuery(desc);
