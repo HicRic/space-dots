@@ -7,15 +7,33 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionAsset inputAsset;
+    
     private Entity inputDataEntity;
+    private InputAction FireAction;
 
     private void Start()
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData));
+        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData), typeof(ButtonInputData));
 #if UNITY_EDITOR
         entityManager.SetName(inputDataEntity, "InputData");
 #endif
+
+        FireAction = inputAsset.FindAction("Fire");
+        FireAction.started += HandleFireStarted;
+        FireAction.canceled += HandleFireCancelled;
+    }
+
+    private void HandleFireCancelled(InputAction.CallbackContext obj)
+    {
+        SetIsFiring(false);
+    }
+
+    private void HandleFireStarted(InputAction.CallbackContext obj)
+    {
+        SetIsFiring(true);
     }
 
     private void OnDestroy()
@@ -25,6 +43,9 @@ public class InputHandler : MonoBehaviour
             EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
             entityManager.DestroyEntity(inputDataEntity);
         }
+
+        FireAction.started -= HandleFireStarted;
+        FireAction.canceled -= HandleFireCancelled;
     }
 
     public void OnMove(InputValue input)
@@ -36,8 +57,12 @@ public class InputHandler : MonoBehaviour
         data.InputDirection = new float2(move.x, move.y);
         entityManager.SetComponentData(inputDataEntity, data);
     }
-
-    public void OnFire(InputValue input)
+    
+    void SetIsFiring(bool isFiring)
     {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        ButtonInputData data = entityManager.GetComponentData<ButtonInputData>(inputDataEntity);
+        data.IsFirePressed = isFiring;
+        entityManager.SetComponentData(inputDataEntity, data);
     }
 }
