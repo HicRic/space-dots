@@ -26,3 +26,5 @@ MonoBehaviour:
     Prefab: {fileID: 3267258556071147055, guid: 6fa3d86ef5df3eb48994530ba5ecb57d, type: 3}
     SpawnSpeed:
       Value: 30
+    Lifespan:
+      Value: 3

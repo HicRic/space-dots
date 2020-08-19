@@ -21,6 +21,7 @@ public class PrefabBridge : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGa
             Entity ent = conversionSystem.GetPrimaryEntity(projectileConfig.Prefab);
             dstManager.AddComponentData(ent, new ProjectileTag());
             dstManager.AddComponentData(ent, projectileConfig.SpawnSpeed);
+            dstManager.AddComponentData(ent, projectileConfig.Lifespan);
             dstManager.AddComponentData(ent, new ConfigId { Value = projectileConfig.Id });
         }
     }

@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 2708745840701009517}
+  SetXpValue: 0
 --- !u!1 &3088363857548991939
 GameObject:
   m_ObjectHideFlags: 0
