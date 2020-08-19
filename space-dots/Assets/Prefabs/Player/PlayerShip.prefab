@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075896949204691182}
   - component: {fileID: 3693547688818076761}
+  - component: {fileID: 6081346827252628439}
   m_Layer: 0
   m_Name: ProjectileLaunch
   m_TagString: Untagged
@@ -271,6 +272,18 @@ MonoBehaviour:
   EmissionFrequency: 0.2
   LastEmissionTime: 0
   InheritVelocityFromEntity: {fileID: 9088548838818715798}
+--- !u!114 &6081346827252628439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536200094307624478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c248c6cf5c314e0ca2a0b899df9906d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5260056466794951185
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using Unity.Entities;
 
-public struct ButtonInputData : IComponentData
+public struct FireInputData : IComponentData
 {
     public bool IsFirePressed;
 }

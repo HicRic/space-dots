@@ -21,11 +21,12 @@ public class ProjectileEmitterSystem : SystemBase
 
         Entities
             .WithoutBurst()
+            .WithAll<ActiveTag>()
             .ForEach((ref ProjectileEmitter emitter, in LocalToWorld l2w) =>
         {
-            while (emitter.EmissionFrequency > 0 && emitter.LastEmissionTime + emitter.EmissionFrequency < elapsedTime)
+            if (emitter.EmissionFrequency > 0 && emitter.LastEmissionTime + emitter.EmissionFrequency < elapsedTime)
             {
-                emitter.LastEmissionTime += emitter.EmissionFrequency;
+                emitter.LastEmissionTime = elapsedTime;
                 Entity spawn = ecb.CreateEntity();
                 float2 inheritVelocity = EntityManager.GetComponentData<LinearVelocity>(emitter.InheritVelocityFromEntity).Value;
                 ecb.AddComponent(spawn, new MoverSpawnRequest

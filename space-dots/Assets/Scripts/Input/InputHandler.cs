@@ -16,7 +16,7 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData), typeof(ButtonInputData));
+        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData), typeof(FireInputData));
 #if UNITY_EDITOR
         entityManager.SetName(inputDataEntity, "InputData");
 #endif
@@ -51,7 +51,7 @@ public class InputHandler : MonoBehaviour
     public void OnMove(InputValue input)
     {
         Vector2 move = input.Get<Vector2>();
-        
+           
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         MoveInputData data = entityManager.GetComponentData<MoveInputData>(inputDataEntity);
         data.InputDirection = new float2(move.x, move.y);
@@ -61,8 +61,12 @@ public class InputHandler : MonoBehaviour
     void SetIsFiring(bool isFiring)
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        ButtonInputData data = entityManager.GetComponentData<ButtonInputData>(inputDataEntity);
-        data.IsFirePressed = isFiring;
-        entityManager.SetComponentData(inputDataEntity, data);
+        
+        FireInputData data = new FireInputData
+        {
+            IsFirePressed = isFiring
+        };
+
+        entityManager.AddComponentData(inputDataEntity, data);
     }
 }
