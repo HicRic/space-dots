@@ -23,6 +23,8 @@ public class PrefabBridge : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGa
             dstManager.AddComponentData(ent, projectileConfig.SpawnSpeed);
             dstManager.AddComponentData(ent, projectileConfig.Lifespan);
             dstManager.AddComponentData(ent, new ConfigId { Value = projectileConfig.Id });
+            dstManager.AddComponent<PreviousTranslation>(ent);
+            dstManager.AddComponentData(ent, projectileConfig.Damager);
         }
     }
 

@@ -8,4 +8,5 @@ public class ProjectileConfig
     public GameObject Prefab;
     public SpawnSpeed SpawnSpeed;
     public Lifespan Lifespan;
+    public Damager Damager;
 }

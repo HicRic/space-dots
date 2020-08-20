@@ -28,3 +28,5 @@ MonoBehaviour:
       Value: 30
     Lifespan:
       Value: 3
+    Damager:
+      Amount: 3
