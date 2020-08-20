@@ -7,4 +7,5 @@ public class PickupConfig
     public uint Id;
     public GameObject Prefab;
     public MoveSpeed MoveSpeed;
+    public Lifespan Lifespan;
 }

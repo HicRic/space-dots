@@ -902,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupId: 2
-  EmissionFrequency: 10
+  EmissionFrequency: 1
   LastEmissionTime: 0
 --- !u!114 &1011169747
 MonoBehaviour:
