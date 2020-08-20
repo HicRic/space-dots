@@ -4,6 +4,6 @@ using Unity.Entities;
 [Serializable]
 public struct Damager : IComponentData
 {
-    public float Amount;
+    public int Amount;
 }
 

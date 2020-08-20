@@ -35,9 +35,10 @@ public class Config : ScriptableObject
             if (ids.Contains(pickup.Id))
             {
                 pickup.Id = nextFreeId;
-                ids.Add(pickup.Id);
                 ++nextFreeId;
             }
+            
+            ids.Add(pickup.Id);
         }
 
         foreach (ProjectileConfig projectile in Projectiles)
@@ -45,9 +46,10 @@ public class Config : ScriptableObject
             if (ids.Contains(projectile.Id))
             {
                 projectile.Id = nextFreeId;
-                ids.Add(projectile.Id);
                 ++nextFreeId;
             }
+
+            ids.Add(projectile.Id);
         }
     }
 }

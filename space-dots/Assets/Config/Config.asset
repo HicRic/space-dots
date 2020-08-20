@@ -21,11 +21,15 @@ MonoBehaviour:
     Prefab: {fileID: 3267258556071147055, guid: fba6ef7c0dbafe34099a21b0112333b9, type: 3}
     MoveSpeed:
       Value: 3
+  - Id: 4
+    Prefab: {fileID: 3267258556071147055, guid: 623a9380676eef748a5e9864bf54afb7, type: 3}
+    MoveSpeed:
+      Value: 0
   Projectiles:
   - Id: 3
     Prefab: {fileID: 3267258556071147055, guid: 6fa3d86ef5df3eb48994530ba5ecb57d, type: 3}
     SpawnSpeed:
-      Value: 30
+      Value: 10
     Lifespan:
       Value: 3
     Damager:

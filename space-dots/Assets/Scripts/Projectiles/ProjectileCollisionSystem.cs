@@ -1,65 +1,80 @@
 ﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
 
+// We query the physics system, so we need to update after it.
 [UpdateAfter(typeof(EndFramePhysicsSystem))]
 public class ProjectileCollisionSystem : SystemBase
 {
-    private EndSimulationEntityCommandBufferSystem ecbs;
-    BuildPhysicsWorld buildPhysicsWorld;
-    EndFramePhysicsSystem endFramePhysicsSystem;
+    private EndSimulationEntityCommandBufferSystem endSimECBS;
+    
+    private BuildPhysicsWorld buildPhysicsWorld;
+    private EndFramePhysicsSystem endFramePhysicsSystem;
+
     private EntityArchetype damageInstanceArchetype;
+    private EntityQuery damageInstanceQuery;
 
     protected override void OnCreate()
     {
         base.OnCreate();
-        ecbs = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+
+        endSimECBS = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+
         buildPhysicsWorld = World.GetOrCreateSystem<BuildPhysicsWorld>();
         endFramePhysicsSystem = World.GetOrCreateSystem<EndFramePhysicsSystem>();
+
         damageInstanceArchetype = EntityManager.CreateArchetype(typeof(DamageInstance), typeof(Translation));
+        damageInstanceQuery = GetEntityQuery(typeof(DamageInstance));
     }
 
     protected override void OnUpdate()
     {
-        CollisionWorld collisionWorld = buildPhysicsWorld.PhysicsWorld.CollisionWorld;
-        EntityCommandBuffer ecb = ecbs.CreateCommandBuffer();
-        Dependency = JobHandle.CombineDependencies(Dependency, endFramePhysicsSystem.GetOutputDependency());
         EntityArchetype dmgArchetype = damageInstanceArchetype;
+        EntityCommandBuffer endSimECB = endSimECBS.CreateCommandBuffer();
+        CollisionWorld collisionWorld = buildPhysicsWorld.PhysicsWorld.CollisionWorld;
+
+        // Clean up any previous DamageInstance entities before we make new ones
+        endSimECB.DestroyEntity(damageInstanceQuery);
+
+        // We want to query the physics world, so we need to make sure all physics jobs have finished.
+        // To do this, we add the EndFramePhysicsSystem's output job handle as a dependency.
+        Dependency = JobHandle.CombineDependencies(Dependency, endFramePhysicsSystem.GetOutputDependency());
 
         Entities
             .WithAll<ProjectileTag>()
             .ForEach((Entity projectileEntity, in Translation translation, in PreviousTranslation previousTranslation, in Damager damager) =>
             {
-                NativeList<int> allHits = new NativeList<int>(Allocator.Temp);
+                // Not sure what a great initial capacity is here.
+                // It seems pretty unlikely that a ray will intersect with > 4 things, so I'll go with that.
+                NativeList<int> allHits = new NativeList<int>(4, Allocator.Temp);
 
                 bool hit = collisionWorld.CastRay(new RaycastInput
                 {
                     Start = previousTranslation.Value,
                     End = translation.Value,
-                    Filter = CollisionFilter.Default
+                    Filter = CollisionFilter.Default // Might need to use filter to do friend/foe filtering later
                 }, out RaycastHit closestHit);
 
                 if (hit)
                 {
-                    ecb.DestroyEntity(projectileEntity);
-
-                    Entity damageInstanceEntity = ecb.CreateEntity(dmgArchetype);
-                    ecb.SetComponent(damageInstanceEntity, new DamageInstance
+                    endSimECB.DestroyEntity(projectileEntity);
+                    
+                    Entity damageInstanceEntity = endSimECB.CreateEntity(dmgArchetype);
+                    endSimECB.SetComponent(damageInstanceEntity, new DamageInstance
                     {
                         DamageAmount = damager.Amount,
                         DamagedEntity = closestHit.Entity
                     });
-                    ecb.SetComponent(damageInstanceEntity, new Translation { Value = translation.Value });
+                    endSimECB.SetComponent(damageInstanceEntity, new Translation { Value = closestHit.Position });
                 }
 
                 allHits.Dispose();
 
             }).Schedule();
 
-        ecbs.AddJobHandleForProducer(Dependency);
+        endSimECBS.AddJobHandleForProducer(Dependency);
     }
 }
