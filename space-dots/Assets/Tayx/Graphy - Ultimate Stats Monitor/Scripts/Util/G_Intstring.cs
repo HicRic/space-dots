@@ -113,6 +113,11 @@ namespace Tayx.Graphy.Utils.NumString
         /// </returns>
         public static string ToStringNonAlloc(this int value)
         {
+            if (value == int.MinValue)
+            {
+                return string.Empty;
+            }
+
             if (value < 0 && -value < negativeBuffer.Length)
             {
                 return negativeBuffer[-value];

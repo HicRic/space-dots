@@ -95,7 +95,10 @@ namespace Tayx.Graphy.Fps
                 m_avgFps += m_averageFpsSamples[i];
             }
 
-            m_avgFps /= m_avgFpsSamplesCount;
+            if (m_avgFpsSamplesCount > 0)
+            {
+                m_avgFps /= m_avgFpsSamplesCount;
+            }
 
             // Checks to reset min and max fps
 
