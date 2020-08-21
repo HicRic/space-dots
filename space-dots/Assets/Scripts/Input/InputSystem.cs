@@ -8,7 +8,7 @@ public class InputSystem : SystemBase
     {
         MoveInputData data = GetSingleton<MoveInputData>();
         float2 moveDirection = data.InputDirection;
-        
+
         // Anything with MoveInputDrivenTag should have its MotionIntent filled out by this input data
         Entities
             .WithAll<MoveInputDrivenTag>()
@@ -30,29 +30,22 @@ public class InputSystem : SystemBase
                 intent.ThrottleNormalized = 1f;
             }).Schedule();
 
-        //if (HasSingleton<FireInputData>())
-        //{
-        //    FireInputData fireData = GetSingleton<FireInputData>();
-        //    bool enable = fireData.IsFirePressed;
+        bool isAiming = aimDirection.x != 0f || aimDirection.y != 0f;
 
-        //    Entities
-        //        .WithoutBurst()
-        //        .WithStructuralChanges()
-        //        .WithAll<FireInputLinkTag>()
-        //        .ForEach((ref Entity entity) =>
-        //        {
-        //            if (enable)
-        //            {
-        //                EntityManager.AddComponent<ActiveTag>(entity);
-        //            }
-        //            else if (EntityManager.HasComponent<ActiveTag>(entity))
-        //            {
-        //                EntityManager.RemoveComponent<ActiveTag>(entity);
-        //            }
-        //        }).Run();
-            
-        //    Entity inputEntity = GetSingletonEntity<FireInputData>();
-        //    EntityManager.RemoveComponent<FireInputData>(inputEntity);
-        //}
+        Entities
+            .WithoutBurst()
+            .WithStructuralChanges()
+            .WithAll<FireInputLinkTag>()
+            .ForEach((ref Entity entity) =>
+            {
+                if (isAiming)
+                {
+                    EntityManager.AddComponent<ActiveTag>(entity);
+                }
+                else if (EntityManager.HasComponent<ActiveTag>(entity))
+                {
+                    EntityManager.RemoveComponent<ActiveTag>(entity);
+                }
+            }).Run();
     }
 }

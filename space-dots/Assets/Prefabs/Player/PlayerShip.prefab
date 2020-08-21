@@ -235,10 +235,10 @@ GameObject:
   - component: {fileID: 4075896949204691182}
   - component: {fileID: 3693547688818076761}
   - component: {fileID: 5962846222305168121}
-  - component: {fileID: 8661516828648528786}
   - component: {fileID: 1287936033549094505}
   - component: {fileID: 3883151732128483715}
   - component: {fileID: 3668226291360475686}
+  - component: {fileID: 4611658954030986917}
   m_Layer: 0
   m_Name: ProjectileLaunch
   m_TagString: Untagged
@@ -288,18 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3747a463404c65beb11166953c47e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8661516828648528786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3536200094307624478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 518e5183a40346ceae957257072f19ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1287936033549094505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +333,18 @@ MonoBehaviour:
   Value:
     x: 0
     y: 0
+--- !u!114 &4611658954030986917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536200094307624478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c248c6cf5c314e0ca2a0b899df9906d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5260056466794951185
 GameObject:
   m_ObjectHideFlags: 0
