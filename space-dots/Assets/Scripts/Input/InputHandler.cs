@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField]
-    private InputActionAsset inputAsset;
+    private InputActionAsset inputAsset = null;
     
     private Entity inputDataEntity;
     private InputAction FireAction;

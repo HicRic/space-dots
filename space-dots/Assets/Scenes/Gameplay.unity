@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 336693808}
   - component: {fileID: 336693807}
   - component: {fileID: 336693810}
+  - component: {fileID: 336693812}
   m_Layer: 0
   m_Name: PickupTest (1)
   m_TagString: Untagged
@@ -393,6 +394,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -102.694}
+--- !u!114 &336693812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336693806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e5f7c9e5e4317bcea6160f60b5e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 1
 --- !u!1 &543942291
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +420,7 @@ GameObject:
   - component: {fileID: 543942293}
   - component: {fileID: 543942292}
   - component: {fileID: 543942294}
+  - component: {fileID: 543942297}
   m_Layer: 0
   m_Name: pickup test 2 (1)
   m_TagString: Untagged
@@ -663,6 +678,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 94.015}
+--- !u!114 &543942297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543942291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e5f7c9e5e4317bcea6160f60b5e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 1
 --- !u!1 &617109708
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +779,7 @@ GameObject:
   - component: {fileID: 627073772}
   - component: {fileID: 627073771}
   - component: {fileID: 627073774}
+  - component: {fileID: 627073776}
   m_Layer: 0
   m_Name: PickupTest (2)
   m_TagString: Untagged
@@ -1008,6 +1037,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50.964}
+--- !u!114 &627073776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627073770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e5f7c9e5e4317bcea6160f60b5e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 1
 --- !u!1 &827388185
 GameObject:
   m_ObjectHideFlags: 3
@@ -2339,6 +2381,9 @@ GameObject:
   - component: {fileID: 1839829963}
   - component: {fileID: 1839829960}
   - component: {fileID: 1839829964}
+  - component: {fileID: 1839829965}
+  - component: {fileID: 1839829966}
+  - component: {fileID: 1839829967}
   m_Layer: 0
   m_Name: CollisionTest
   m_TagString: Untagged
@@ -2611,6 +2656,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 20
+--- !u!114 &1839829965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839829958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e5f7c9e5e4317bcea6160f60b5e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 10
+--- !u!114 &1839829966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839829958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e73482d418246ca8b76e3291dc98b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 1
+--- !u!114 &1839829967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839829958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349d1c6a5e404c2090b875de039e0c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value:
+    x: 0
+    y: 0
 --- !u!1 &2084411045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,6 +2710,7 @@ GameObject:
   - component: {fileID: 2084411046}
   - component: {fileID: 2084411047}
   - component: {fileID: 2084411050}
+  - component: {fileID: 2084411051}
   m_Layer: 0
   m_Name: pickup test 2
   m_TagString: Untagged
@@ -2881,6 +2968,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 10
+--- !u!114 &2084411051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084411045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e5f7c9e5e4317bcea6160f60b5e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 1
 --- !u!1 &2140393109
 GameObject:
   m_ObjectHideFlags: 0

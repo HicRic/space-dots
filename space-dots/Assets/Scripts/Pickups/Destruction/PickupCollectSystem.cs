@@ -18,11 +18,10 @@ public class PickupCollectSystem : SystemBase
         EntityCommandBuffer ecb = ecbs.CreateCommandBuffer();
 
         ComponentDataFromEntity<CurrencyIron> ironComps = GetComponentDataFromEntity<CurrencyIron>(true);
-        ComponentDataFromEntity<CurrencyXP> xpComps = GetComponentDataFromEntity<CurrencyXP>(true);
+        ComponentDataFromEntity<CurrencyXP> xpComps = GetComponentDataFromEntity<CurrencyXP>();
 
         JobHandle outputDepend = Entities
             .WithAll<CurrencyXP>()
-            .WithReadOnly(xpComps)
             .ForEach((Entity entity, in PickupCollect pickupCollect) =>
             {
                 CurrencyXP awardXp = xpComps[entity];
@@ -31,7 +30,7 @@ public class PickupCollectSystem : SystemBase
                 {
                     CurrencyXP targetXp = xpComps[pickupCollect.Target];
                     targetXp.Amount += awardXp.Amount;
-                    ecb.SetComponent(pickupCollect.Target, targetXp);
+                    xpComps[pickupCollect.Target] = targetXp;
                 }
                 else
                 {
