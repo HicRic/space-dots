@@ -1,7 +1,7 @@
 ﻿using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct InputDrivenTag : IComponentData
+public struct AimInputDrivenTag : IComponentData
 {
     
 }

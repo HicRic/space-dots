@@ -16,7 +16,7 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData), typeof(FireInputData));
+        inputDataEntity = entityManager.CreateEntity(typeof(MoveInputData), typeof(FireInputData), typeof(AimInputData));
 #if UNITY_EDITOR
         entityManager.SetName(inputDataEntity, "InputData");
 #endif
@@ -55,6 +55,16 @@ public class InputHandler : MonoBehaviour
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         MoveInputData data = entityManager.GetComponentData<MoveInputData>(inputDataEntity);
         data.InputDirection = new float2(move.x, move.y);
+        entityManager.SetComponentData(inputDataEntity, data);
+    }
+
+    public void OnAim(InputValue input)
+    {
+        Vector2 aim = input.Get<Vector2>();
+
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        AimInputData data = entityManager.GetComponentData<AimInputData>(inputDataEntity);
+        data.InputDirection = new float2(aim.x, aim.y);
         entityManager.SetComponentData(inputDataEntity, data);
     }
     

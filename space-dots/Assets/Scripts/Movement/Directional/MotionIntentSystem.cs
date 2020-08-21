@@ -12,14 +12,14 @@ public class MotionIntentSystem : SystemBase
             .ForEach((
             ref LinearAcceleration linearAcceleration,
             ref Rotation rotation,
+            in LocalToWorld worldTransform,
             in MotionPowerLimits limits,
             in MotionIntent intent) =>
         {
             float throttle = math.lerp(0, limits.LinearAccelerationLimit, intent.ThrottleNormalized);
+            linearAcceleration.Value = intent.DirectionNormalized * throttle;
 
-            float2 facing = math.normalizesafe(math.rotate(rotation.Value, math.up()).xy, math.up().xy);
-            linearAcceleration.Value = facing * throttle;
-
+            float2 facing = worldTransform.Up.xy;
             float desiredAngleDelta = math.acos(math.dot(facing, intent.DirectionNormalized));
             float frameAngleDelta = limits.AngularVelocityLimit * deltaTime;
             frameAngleDelta = math.min(frameAngleDelta, desiredAngleDelta);
