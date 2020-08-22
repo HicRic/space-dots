@@ -5215,6 +5215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LinearAccelerationLimit: 0
+  LinearVelocityLimit: 0
   AngularVelocityLimit: 15.7
 --- !u!114 &347071435866077139
 MonoBehaviour:
@@ -5488,8 +5489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4de85f8b9914317b4918ab4b9b5d031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LinearAccelerationLimit: 5
-  AngularVelocityLimit: 3
+  LinearAccelerationLimit: 20
+  LinearVelocityLimit: 5
+  AngularVelocityLimit: 10
 --- !u!114 &988439444709865548
 MonoBehaviour:
   m_ObjectHideFlags: 0

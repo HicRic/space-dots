@@ -5,6 +5,7 @@ using Unity.Mathematics;
 public struct MotionPowerLimits : IComponentData
 {
     public float LinearAccelerationLimit;
+    public float LinearVelocityLimit;
     public float AngularVelocityLimit;
 }
 

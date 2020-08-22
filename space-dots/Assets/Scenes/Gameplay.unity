@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LinearAccelerationLimit: 10
+  LinearVelocityLimit: 5
   AngularVelocityLimit: 5
 --- !u!114 &1601233924
 MonoBehaviour:
@@ -3070,7 +3071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6565797472246765362, guid: 2619bbd2da445a344a1671760ede7b7a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 304.40002
+      value: 304.5
       objectReference: {fileID: 0}
     - target: {fileID: 6565797472642411800, guid: 2619bbd2da445a344a1671760ede7b7a, type: 3}
       propertyPath: m_AnchoredPosition.x
